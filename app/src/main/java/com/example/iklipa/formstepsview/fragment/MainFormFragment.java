@@ -31,9 +31,6 @@ public class MainFormFragment extends Fragment {
     @BindView(R.id.headerSlideText)
     HeaderSlideView headerSlideView;
 
-    private FirstFormEvent firstFormEvent;
-    private SecondFormEvent secondFormEvent;
-
     Unbinder unbinder;
 
     @Override
@@ -52,8 +49,9 @@ public class MainFormFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         unbinder = ButterKnife.bind(this, view);
 
-        headerSlideView.addSlide(new FirstFormEvent());
-        headerSlideView.addSlide(new SecondFormEvent());
+        headerSlideView.addSlide(new FirstFormEvent(), "First");
+        headerSlideView.addSlide(new SecondFormEvent(), "Seccond");
+        headerSlideView.setActiveSlide(0);
     }
 
     public void onMessageEvent(FirstFormEvent firstFormEvent) {

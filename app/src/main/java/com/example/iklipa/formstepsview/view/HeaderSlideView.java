@@ -37,7 +37,8 @@ public class HeaderSlideView extends RelativeLayout {
         View view = LayoutInflater.from(context).inflate(R.layout.fragment_header_slide_layout, this);
     }
 
-    public void addSlide(DefaultSlideModel model) {
+    public void addSlide(DefaultSlideModel model, String title) {
+        model.setSlideTitle(title);
         slides.add(model);
     }
 
