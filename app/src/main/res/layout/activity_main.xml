@@ -7,13 +7,7 @@
     tools:context="com.example.iklipa.formstepsview.MainActivity">
 
     <fragment
-        android:name="com.example.iklipa.formstepsview.fragments.HeaderSlideFragment"
-        android:id="@+id/headerFragment"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <fragment
-        android:name="com.example.iklipa.formstepsview.fragments.FormContentFragment"
+        android:name="com.example.iklipa.formstepsview.fragment.MainFormFragment"
         android:id="@+id/contentFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
