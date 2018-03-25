@@ -9,11 +9,6 @@ import butterknife.Unbinder;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.headerFragment)
-    Fragment headerFragment;
-    @BindView(R.id.contentFragment)
-    Fragment contentFragment;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

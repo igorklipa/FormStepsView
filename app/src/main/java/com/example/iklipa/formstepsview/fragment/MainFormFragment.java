@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import com.example.iklipa.formstepsview.R;
 import com.example.iklipa.formstepsview.event.FirstFormEvent;
 import com.example.iklipa.formstepsview.event.SecondFormEvent;
+import com.example.iklipa.formstepsview.model.DefaultSlideModel;
 import com.example.iklipa.formstepsview.view.HeaderSlideView;
 
 import org.greenrobot.eventbus.EventBus;
@@ -33,6 +34,9 @@ public class MainFormFragment extends Fragment {
 
     Unbinder unbinder;
 
+    private FirstFormEvent firstFormEvent;
+    private SecondFormEvent secondFormEvent;
+
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -49,28 +53,21 @@ public class MainFormFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         unbinder = ButterKnife.bind(this, view);
 
-        headerSlideView.addSlide(new FirstFormEvent(), "First");
-        headerSlideView.addSlide(new SecondFormEvent(), "Seccond");
-        headerSlideView.setActiveSlide(0);
+        FirstFormEvent firstFormEvent = (FirstFormEvent) DefaultSlideModel.newInstance("First", new FirstFormFragment());
+        SecondFormEvent secondFormEvent = (SecondFormEvent) DefaultSlideModel.newInstance("Second", new SecondFormFragment());
+
+        headerSlideView.addSlide(firstFormEvent);
+        headerSlideView.addSlide(secondFormEvent);
+        headerSlideView.show();
     }
 
-    public void onMessageEvent(FirstFormEvent firstFormEvent) {
-        setActiveFragment(new FirstFormFragment());
-    }
-
-    public void onMessageEvent(SecondFormEvent secondFormEvent) {
-        setActiveFragment(new SecondFormFragment());
-    }
-
-    private void setActiveFragment(Fragment fragment) {
-        FragmentManager fm = getFragmentManager();
-
-        if (fm != null) {
-            FragmentTransaction ft = fm.beginTransaction();
-            ft.replace(R.id.formFragmentContent, new SecondFormFragment());
-            ft.commit();
-        }
-    }
+//    public void onMessageEvent(FirstFormEvent firstFormEvent) {
+//        setActiveFragment(new FirstFormFragment());
+//    }
+//
+//    public void onMessageEvent(SecondFormEvent secondFormEvent) {
+//        setActiveFragment(new SecondFormFragment());
+//    }
 
     @Override
     public void onStart() {

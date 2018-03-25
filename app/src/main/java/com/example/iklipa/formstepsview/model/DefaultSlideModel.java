@@ -1,5 +1,8 @@
 package com.example.iklipa.formstepsview.model;
 
+
+import android.support.v4.app.Fragment;
+
 /**
  * Created by iklipa on 3/23/2018.
  */
@@ -7,7 +10,7 @@ package com.example.iklipa.formstepsview.model;
 public class DefaultSlideModel {
 
     private String slideTitle;
-    private int slideNumber;
+    private Fragment fragment;
 
     public String getSlideTitle() {
         return slideTitle;
@@ -17,11 +20,18 @@ public class DefaultSlideModel {
         this.slideTitle = slideTitle;
     }
 
-    public int getSlideNumber() {
-        return slideNumber;
+    public Fragment getFragment() {
+        return fragment;
     }
 
-    public void setSlideNumber(int slideNumber) {
-        this.slideNumber = slideNumber;
+    public void setFragment(Fragment fragment) {
+        this.fragment = fragment;
+    }
+
+    public static DefaultSlideModel newInstance(String slideTitle, Fragment fragment) {
+        DefaultSlideModel model = new DefaultSlideModel();
+        model.slideTitle = slideTitle;
+        model.fragment = fragment;
+        return model;
     }
 }
