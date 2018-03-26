@@ -1,5 +1,7 @@
 package com.example.iklipa.formstepsview.event;
 
+import android.support.v4.app.Fragment;
+
 import com.example.iklipa.formstepsview.model.DefaultSlideModel;
 
 /**
@@ -7,4 +9,7 @@ import com.example.iklipa.formstepsview.model.DefaultSlideModel;
  */
 
 public class SecondFormEvent extends DefaultSlideModel {
+    public SecondFormEvent(String slideTitle, Fragment fragment) {
+        super(slideTitle, fragment);
+    }
 }

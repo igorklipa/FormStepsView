@@ -3,19 +3,16 @@ package com.example.iklipa.formstepsview.fragment;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 
 import com.example.iklipa.formstepsview.R;
-import com.example.iklipa.formstepsview.event.FirstFormEvent;
-import com.example.iklipa.formstepsview.event.SecondFormEvent;
-import com.example.iklipa.formstepsview.model.DefaultSlideModel;
-import com.example.iklipa.formstepsview.view.HeaderSlideView;
+import com.example.iklipa.formstepsview.model.WizardModel;
+import com.example.iklipa.formstepsview.view.Wizard;
 
-import org.greenrobot.eventbus.EventBus;
+import java.util.ArrayList;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -27,15 +24,10 @@ import butterknife.Unbinder;
 
 public class MainFormFragment extends Fragment {
 
-    @BindView(R.id.formFragmentContent)
-    Fragment formFragmentContent;
-    @BindView(R.id.headerSlideText)
-    HeaderSlideView headerSlideView;
+    @BindView(R.id.wizard)
+    Wizard wizard;
 
     Unbinder unbinder;
-
-    private FirstFormEvent firstFormEvent;
-    private SecondFormEvent secondFormEvent;
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
@@ -45,7 +37,7 @@ public class MainFormFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        return super.onCreateView(inflater, container, savedInstanceState);
+        return inflater.inflate(R.layout.fragment_form_content_layout, container, false);
     }
 
     @Override
@@ -53,32 +45,20 @@ public class MainFormFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         unbinder = ButterKnife.bind(this, view);
 
-        FirstFormEvent firstFormEvent = (FirstFormEvent) DefaultSlideModel.newInstance("First", new FirstFormFragment());
-        SecondFormEvent secondFormEvent = (SecondFormEvent) DefaultSlideModel.newInstance("Second", new SecondFormFragment());
+        ArrayList<String> stepNames = new ArrayList<String>() {{
+            add("First");
+            add("Second");
+        }};
 
-        headerSlideView.addSlide(firstFormEvent);
-        headerSlideView.addSlide(secondFormEvent);
-        headerSlideView.show();
-    }
+        ArrayList steps = new ArrayList<LinearLayout>() {{
+            add(new FirstFormView(getContext()));
+            add(new SecondFormView(getContext()));
+        }};
 
-//    public void onMessageEvent(FirstFormEvent firstFormEvent) {
-//        setActiveFragment(new FirstFormFragment());
-//    }
-//
-//    public void onMessageEvent(SecondFormEvent secondFormEvent) {
-//        setActiveFragment(new SecondFormFragment());
-//    }
-
-    @Override
-    public void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-        EventBus.getDefault().unregister(this);
+        WizardModel wizardModel = new WizardModel();
+        wizardModel.setSlideLayouts(steps);
+        wizardModel.setSlideTitles(stepNames);
+        wizard.setData(wizardModel);
     }
 
     @Override

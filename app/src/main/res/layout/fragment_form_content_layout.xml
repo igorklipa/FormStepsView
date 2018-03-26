@@ -2,14 +2,9 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent" android:layout_height="match_parent">
 
-    <com.example.iklipa.formstepsview.view.HeaderSlideView
-        android:id="@+id/headerSlideText"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
-
-    <fragment
-        android:id="@+id/formFragmentContent"
-        android:layout_width="wrap_content"
+    <com.example.iklipa.formstepsview.view.Wizard
+        android:id="@+id/wizard"
+        android:layout_width="match_parent"
         android:layout_height="match_parent" />
 
 </RelativeLayout>

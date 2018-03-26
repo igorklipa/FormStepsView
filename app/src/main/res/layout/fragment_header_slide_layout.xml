@@ -1,18 +1,41 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="match_parent">
 
-    <LinearLayout
-        android:id="@+id/headerSlideTitles"
+    <RelativeLayout
+        android:id="@+id/headerSlideContainer"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"/>
+        android:paddingTop="10dp"
+        android:paddingBottom="10dp">
 
-    <LinearLayout
+        <LinearLayout
+            android:id="@+id/headerSlideTitles"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" />
+
+        <LinearLayout
+            android:id="@+id/headerSlideLine"
+            android:layout_width="wrap_content"
+            android:layout_height="10dp"
+            android:orientation="horizontal"
+            android:layout_below="@+id/headerSlideTitles"
+            android:background="@color/colorAccent" />
+
+        <!--<View-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="5dp"-->
+            <!--android:layout_below="@+id/headerSlideTitles"-->
+            <!--android:background="@color/gray" />-->
+
+    </RelativeLayout>
+
+    <FrameLayout
+        android:id="@+id/headerSlideContentFragment"
         android:layout_width="match_parent"
-        android:layout_height="1dp"
-        android:background="@color/colorBlack"
-        android:layout_centerInParent="true"/>
+        android:layout_height="match_parent" />
 
-</RelativeLayout>
+</LinearLayout>

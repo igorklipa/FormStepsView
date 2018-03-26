@@ -12,6 +12,11 @@ public class DefaultSlideModel {
     private String slideTitle;
     private Fragment fragment;
 
+    public DefaultSlideModel(String slideTitle, Fragment fragment) {
+        this.slideTitle = slideTitle;
+        this.fragment = fragment;
+    }
+
     public String getSlideTitle() {
         return slideTitle;
     }
@@ -28,10 +33,10 @@ public class DefaultSlideModel {
         this.fragment = fragment;
     }
 
-    public static DefaultSlideModel newInstance(String slideTitle, Fragment fragment) {
-        DefaultSlideModel model = new DefaultSlideModel();
-        model.slideTitle = slideTitle;
-        model.fragment = fragment;
-        return model;
-    }
+//    public static DefaultSlideModel newInstance(String slideTitle, Fragment fragment) {
+//        DefaultSlideModel model = new DefaultSlideModel();
+//        model.slideTitle = slideTitle;
+//        model.fragment = fragment;
+//        return model;
+//    }
 }

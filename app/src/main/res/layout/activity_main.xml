@@ -8,6 +8,7 @@
 
     <fragment
         android:name="com.example.iklipa.formstepsview.fragment.MainFormFragment"
+        class="com.example.iklipa.formstepsview.fragment.MainFormFragment"
         android:id="@+id/contentFragment"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
